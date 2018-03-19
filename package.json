@@ -1,0 +1,14 @@
+{
+  "name": "lonelycloud",
+  "version": "1.0.0",
+  "description": "Lonely Cloud - Haikus for weather",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nathan Kunicki <me@nathankunicki.com>",
+  "license": "MIT",
+  "dependencies": {
+    "alexa-sdk": "^1.0.25"
+  }
+}

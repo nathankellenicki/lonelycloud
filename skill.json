@@ -1,0 +1,54 @@
+{
+    "skillManifest": {
+      "publishingInformation": {
+        "locales": {
+          "en-US": {
+            "summary": "Get your weather report in a friendly, almost haiku like fashion.",
+            "examplePhrases": [
+              "Alexa ask Lonely Cloud for the weather report"
+            ],
+            "keywords": [
+              "lonely",
+              "cloud",
+              "weather"
+            ],
+            "name": "Lonely Cloud",
+            "description": "Get your weather report in a friendly, almost haiku like fashion."
+          },
+          "en-GB": {
+            "summary": "Get your weather report in a friendly, almost haiku like fashion.",
+            "examplePhrases": [
+              "Alexa ask Lonely Cloud for the weather report"
+            ],
+            "keywords": [
+              "lonely",
+              "cloud",
+              "weather"
+            ],
+            "name": "Lonely Cloud",
+            "description": "Get your weather report in a friendly, almost haiku like fashion."
+          }
+        },
+        "isAvailableWorldwide": true,
+        "category": "WEATHER",
+        "distributionCountries": [
+          
+        ]
+      },
+      "apis": {
+        "custom": {
+          "endpoint": {
+            "sourceDir": "lambda"
+          }
+        }
+      },
+      "manifestVersion": "1.0",
+      "privacyAndCompliance": {
+        "allowsPurchases": false,
+        "isExportCompliant": true,
+        "containsAds": false,
+        "isChildDirected": true,
+        "usesPersonalInfo": true
+      }
+    }
+}
