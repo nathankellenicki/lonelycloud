@@ -1,10 +1,20 @@
 const Alexa = require("alexa-sdk");
+const LonelyCloud = require("./lonelycloud.js");
+const WeatherProvider = require("./weatherprovider.js");
 
 const Secrets = require("./secrets.js");
 
 
 const handlers = {
     "WeatherReport": function () {
+
+        WeatherProvider.getWeatherForLocation("Guildford", "UK")
+        .then(LonelyCloud.generateHaiku)
+        .then((haiku) => {
+            this.response.speak(haiku.join(" "));
+            this.emit(":responseReady");
+        });
+        return;
 
         if (this.event.context.System.user.permissions) {
             const token = this.event.context.System.user.permissions.consentToken;

@@ -29,6 +29,6 @@ module.exports.generateHaiku = function (report) {
         haiku.push("Get out those sunglasses, it's really quite warm!");
     }
 
-    return haiku.join("\n");
+    return haiku;
 
 }
