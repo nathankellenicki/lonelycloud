@@ -1,50 +1,23 @@
-const Alexa = require("alexa-sdk");
 const LonelyCloud = require("./lonelycloud.js");
 const WeatherProvider = require("./weatherprovider.js");
+const Readline = require("readline");
 
 const Secrets = require("./secrets.js");
 
+const readline = Readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-const handlers = {
-    "WeatherReport": function () {
-
-        WeatherProvider.getWeatherForLocation("Guildford", "UK")
+process.stdout.write("Thank you for using Lonely Cloud.\n");
+readline.question("What city are you in?\n", (city) => {
+    readline.question("What country are you in?\n", (country) => {
+        WeatherProvider.getWeatherForLocation(city, country)
         .then(LonelyCloud.generateHaiku)
         .then((haiku) => {
-            this.response.speak(haiku.join(" "));
-            this.emit(":responseReady");
+            process.stdout.write(haiku.join("\n"));
+            process.stdout.write("\n");
+            readline.close();
         });
-        return;
-
-        if (this.event.context.System.user.permissions) {
-            const token = this.event.context.System.user.permissions.consentToken;
-            const apiEndpoint = this.event.context.System.apiEndpoint;
-            const deviceId = this.event.context.System.device.deviceId;
-    
-            const das = new Alexa.services.DeviceAddressService();
-            das.getFullAddress(deviceId, apiEndpoint, token)
-            .then((data) => {
-                this.response.speak("<address information>");
-                console.log("Address get: " + JSON.stringify(data));
-                this.emit(":responseReady");
-            })
-            .catch((error) => {
-                this.response.speak("I'm sorry, something went wrong.");
-                this.emit(":responseReady");
-                console.log(error.message);
-            });
-        } else {
-            this.response.speak("Please grant skill permissions to access your device address.");
-            this.emit(":responseReady");
-        }
-        
-    }
-};
-
-
-exports.handler = function (event, context, callback) {
-    const alexa = Alexa.handler(event, context, callback);
-    alexa.appId = Secrets.ALEXA_SKILL_APP_ID,
-    alexa.registerHandlers(handlers);
-    alexa.execute();
-};
+    });
+});

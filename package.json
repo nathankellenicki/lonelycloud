@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Lonely Cloud - Haikus for weather",
   "main": "main.js",
+  "bin": {
+    "lonelycloud": "./main.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"lol\" && exit 1"
   },
   "author": "Nathan Kunicki <me@nathankunicki.com>",
   "license": "MIT",
